@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import { Heart } from "lucide-react";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
 import { useWishlistStore } from "@/store/wishlistStore";
 import type { Product } from "@/types";
 import { cn } from "@/lib/utils";
@@ -26,7 +26,7 @@ export function WishlistButton({
         e.stopPropagation();
         toggle(product);
         toast.success(
-          inWishlist ? "Removed from wishlist" : "Added to wishlist ❤️",
+          inWishlist ? "Removed from wishlist" : "Added to wishlist â¤ï¸",
         );
       }}
       aria-label="Toggle wishlist"
@@ -42,3 +42,4 @@ export function WishlistButton({
     </button>
   );
 }
+

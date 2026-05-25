@@ -5,6 +5,7 @@ import { PromoBar } from "@/components/layout/PromoBar";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Providers } from "@/components/layout/Providers";
+import { cn } from "@/lib/utils";
 
 const fredoka = Fredoka({
   subsets: ["latin"],
@@ -46,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fredoka.variable} ${poppins.variable}`}>
+    <html lang="en" className={cn(fredoka.variable, poppins.variable)}>
       <body>
         <Providers>
           <PromoBar />

@@ -1,18 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
-import { CheckCircle, Truck, Package, MapPin, Clock } from "lucide-react";
+import { Progress } from "@/components/ui/progress";
+import { Separator } from "@/components/ui/separator";
+import { CheckCircle2, Circle, Package, Truck, MapPin, Clock } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const STAGES = [
-  { key: "placed", label: "Order Placed", icon: CheckCircle, done: true, sub: "Today, 10:42 AM" },
-  { key: "packed", label: "Packed", icon: Package, done: true, sub: "Mumbai Warehouse" },
-  { key: "shipped", label: "Shipped", icon: Truck, done: true, sub: "Via Bluedart · AWB BD-189827" },
-  { key: "out", label: "Out for Delivery", icon: MapPin, done: false, sub: "Expected today by 7 PM" },
-  { key: "delivered", label: "Delivered", icon: Clock, done: false, sub: "" },
+  { key: "placed",    label: "Order Placed",       icon: CheckCircle2, done: true,  sub: "Today, 10:42 AM",              progress: 20  },
+  { key: "packed",    label: "Packed",              icon: Package,      done: true,  sub: "Mumbai Warehouse",             progress: 40  },
+  { key: "shipped",   label: "Shipped",             icon: Truck,        done: true,  sub: "Via Bluedart · AWB BD-189827", progress: 60  },
+  { key: "out",       label: "Out for Delivery",    icon: MapPin,       done: false, sub: "Expected today by 7 PM",       progress: 80  },
+  { key: "delivered", label: "Delivered",           icon: Clock,        done: false, sub: "",                             progress: 100 },
 ];
+
+const currentProgress = STAGES.filter((s) => s.done).length / STAGES.length * 100;
 
 export default function TrackOrderPage() {
   const [orderId, setOrderId] = useState("");
@@ -35,6 +40,7 @@ export default function TrackOrderPage() {
             return;
           }
           setTracked(orderId.trim().toUpperCase());
+          toast.success("Order found!", { description: `Showing status for ${orderId.trim().toUpperCase()}` });
         }}
         className="bg-white border border-tk-gray-lt rounded-xl p-5 max-w-2xl"
       >
@@ -53,52 +59,73 @@ export default function TrackOrderPage() {
           </Button>
         </div>
         <p className="text-xs text-tk-gray mt-2 font-poppins">
-          You'll find your order ID in our WhatsApp confirmation, or in the
-          email we sent after checkout.
+          Find your order ID in the WhatsApp confirmation or email after checkout.
         </p>
       </form>
 
       {tracked && (
-        <div className="mt-8 bg-white border border-tk-gray-lt rounded-xl p-5 max-w-2xl">
+        <div className="mt-8 bg-white border border-tk-gray-lt rounded-xl p-5 max-w-2xl space-y-5">
           <div className="flex items-baseline justify-between">
             <h2 className="font-fredoka uppercase text-lg text-tk-black">
               Order {tracked}
             </h2>
-            <span className="text-xs text-tk-gray font-poppins">
-              Estimated delivery: today by 7 PM
+            <span className="text-xs text-tk-gray font-poppins bg-tk-offwhite px-2 py-1 rounded-full">
+              Est. delivery: today by 7 PM
             </span>
           </div>
 
-          <ol className="mt-5 space-y-4">
+          {/* Progress bar */}
+          <div>
+            <div className="flex justify-between text-[10px] font-poppins text-tk-gray mb-1.5">
+              <span>Placed</span>
+              <span>Delivered</span>
+            </div>
+            <Progress
+              value={currentProgress}
+              className="h-2 bg-tk-gray-lt [&>div]:bg-tk-red"
+            />
+            <p className="text-xs font-poppins text-tk-gray mt-1.5">
+              {currentProgress.toFixed(0)}% complete — out for delivery soon
+            </p>
+          </div>
+
+          <Separator />
+
+          {/* Stage list */}
+          <ol className="space-y-4">
             {STAGES.map((s, i) => (
               <li key={s.key} className="flex items-start gap-3">
                 <div
-                  className={
-                    "h-9 w-9 grid place-items-center rounded-full shrink-0 " +
-                    (s.done
-                      ? "bg-tk-green text-white"
-                      : "bg-tk-gray-lt text-tk-gray")
-                  }
+                  className={cn(
+                    "h-9 w-9 grid place-items-center rounded-full shrink-0 transition-colors",
+                    s.done
+                      ? "bg-tk-red text-white"
+                      : "bg-tk-gray-lt text-tk-gray"
+                  )}
                 >
-                  <s.icon className="h-4 w-4" />
+                  {s.done ? (
+                    <s.icon className="h-4 w-4" />
+                  ) : (
+                    <Circle className="h-4 w-4" />
+                  )}
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 pt-1">
                   <div
-                    className={
-                      "font-fredoka uppercase " +
-                      (s.done ? "text-tk-black" : "text-tk-gray")
-                    }
+                    className={cn(
+                      "font-fredoka uppercase text-sm",
+                      s.done ? "text-tk-black" : "text-tk-gray"
+                    )}
                   >
                     {s.label}
                   </div>
                   {s.sub && (
-                    <div className="text-xs text-tk-gray font-poppins">
+                    <div className="text-xs text-tk-gray font-poppins mt-0.5">
                       {s.sub}
                     </div>
                   )}
                 </div>
-                {i < STAGES.length - 1 && (
-                  <div className="hidden md:block w-px bg-tk-gray-lt h-8" />
+                {s.done && (
+                  <CheckCircle2 className="h-4 w-4 text-tk-red shrink-0 mt-1" />
                 )}
               </li>
             ))}

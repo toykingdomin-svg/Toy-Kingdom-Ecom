@@ -1,8 +1,8 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
 import { Minus, Plus, X } from "lucide-react";
 import type { CartItem as Item } from "@/types";
 import { useCartStore } from "@/store/cartStore";
@@ -94,7 +94,7 @@ export function CartItem({ item }: { item: Item }) {
           onClick={() => {
             addToWishlist(product);
             removeItem(product.id);
-            toast.success("Moved to Wishlist ❤️");
+            toast.success("Moved to Wishlist â¤ï¸");
           }}
           className="mt-2 text-xs text-tk-red hover:underline"
         >
@@ -104,3 +104,4 @@ export function CartItem({ item }: { item: Item }) {
     </div>
   );
 }
+

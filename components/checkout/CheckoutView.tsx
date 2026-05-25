@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
 import {
   useCartStore,
   selectTotalItems,
@@ -18,6 +18,9 @@ import {
   selectGrandTotal,
 } from "@/store/cartStore";
 import { Button } from "@/components/ui/Button";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
 import { formatPrice } from "@/lib/utils";
 import { ShoppingBag } from "lucide-react";
 
@@ -179,11 +182,31 @@ export function CheckoutView() {
           <h3 className="font-fredoka uppercase text-tk-black mb-4">
             2. Payment Method
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <PayOption value="upi" label="UPI" icon="📱" register={register} />
-            <PayOption value="card" label="Credit/Debit Card" icon="💳" register={register} />
-            <PayOption value="cod" label="Cash on Delivery" icon="💵" register={register} />
-          </div>
+          <RadioGroup
+            defaultValue="upi"
+            onValueChange={(val) => register("payment").onChange({ target: { value: val, name: "payment" } })}
+            className="grid grid-cols-1 sm:grid-cols-3 gap-3"
+          >
+            {[
+              { value: "upi",  label: "UPI",              icon: "📱" },
+              { value: "card", label: "Credit/Debit Card", icon: "💳" },
+              { value: "cod",  label: "Cash on Delivery",  icon: "💵" },
+            ].map((opt) => (
+              <Label
+                key={opt.value}
+                htmlFor={`pay-${opt.value}`}
+                className="flex items-center gap-2 border border-tk-gray-lt rounded-lg p-3 cursor-pointer hover:border-tk-red has-[:checked]:border-tk-red has-[:checked]:bg-tk-red/5 transition-colors"
+              >
+                <RadioGroupItem
+                  value={opt.value}
+                  id={`pay-${opt.value}`}
+                  className="text-tk-red border-tk-gray-lt"
+                />
+                <span className="text-lg">{opt.icon}</span>
+                <span className="font-poppins text-sm font-medium text-tk-black">{opt.label}</span>
+              </Label>
+            ))}
+          </RadioGroup>
           <p className="text-xs text-tk-gray mt-3 font-poppins">
             This is a demo — no real payment is processed.
           </p>
@@ -216,7 +239,7 @@ export function CheckoutView() {
               cls={delivery === 0 ? "text-tk-green font-bold" : ""}
             />
           </div>
-          <div className="border-t border-tk-gray-lt my-4" />
+          <Separator className="my-4" />
           <div className="flex justify-between items-center">
             <span className="font-fredoka uppercase text-tk-black">Total</span>
             <span className="font-poppins font-bold text-lg">
@@ -288,27 +311,3 @@ function Row({
   );
 }
 
-function PayOption({
-  value,
-  label,
-  icon,
-  register,
-}: {
-  value: "upi" | "card" | "cod";
-  label: string;
-  icon: string;
-  register: ReturnType<typeof useForm<FormData>>["register"];
-}) {
-  return (
-    <label className="block border border-tk-gray-lt rounded-lg p-3 cursor-pointer hover:border-tk-red has-[:checked]:border-tk-red has-[:checked]:bg-tk-red/5">
-      <input
-        type="radio"
-        value={value}
-        {...register("payment")}
-        className="accent-tk-red mr-2"
-      />
-      <span className="text-lg mr-1">{icon}</span>
-      <span className="font-poppins text-sm font-medium">{label}</span>
-    </label>
-  );
-}
