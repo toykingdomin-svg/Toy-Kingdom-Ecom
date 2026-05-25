@@ -1,0 +1,14 @@
+[
+  { "id": "hot-wheels", "name": "Hot Wheels", "slug": "hot-wheels" },
+  { "id": "lego", "name": "LEGO", "slug": "lego" },
+  { "id": "barbie", "name": "Barbie", "slug": "barbie" },
+  { "id": "nerf", "name": "Nerf", "slug": "nerf" },
+  { "id": "funskool", "name": "Funskool", "slug": "funskool" },
+  { "id": "mattel", "name": "Mattel", "slug": "mattel" },
+  { "id": "fisher-price", "name": "Fisher-Price", "slug": "fisher-price" },
+  { "id": "play-doh", "name": "Play-Doh", "slug": "play-doh" },
+  { "id": "disney", "name": "Disney", "slug": "disney" },
+  { "id": "marvel", "name": "Marvel", "slug": "marvel" },
+  { "id": "action-man", "name": "Action Man", "slug": "action-man" },
+  { "id": "schleich", "name": "Schleich", "slug": "schleich" }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "b1",
+    "title": "NEW ARRIVALS THIS WEEK",
+    "subtitle": "Fresh stock from the world's top toy brands",
+    "ctaLabel": "SHOP NOW",
+    "ctaHref": "/collection/new-arrivals",
+    "bg": "#E5961E",
+    "textColor": "#0A0A0A"
+  },
+  {
+    "id": "b2",
+    "title": "RC CARS FROM ₹299",
+    "subtitle": "Remote-control fun for every age",
+    "ctaLabel": "EXPLORE RC",
+    "ctaHref": "/collection/rc-battery",
+    "bg": "#0A0A0A",
+    "textColor": "#E5961E"
+  },
+  {
+    "id": "b3",
+    "title": "WHOLESALE ENQUIRIES WELCOME",
+    "subtitle": "Best bulk rates in Mumbai. PAN India shipping.",
+    "ctaLabel": "DM TO ORDER",
+    "ctaHref": "/wholesale",
+    "bg": "#E8231A",
+    "textColor": "#FFFFFF"
+  },
+  {
+    "id": "b4",
+    "title": "BIG SAVINGS UP TO 50% OFF",
+    "subtitle": "Use code TK20 on orders above ₹1999",
+    "ctaLabel": "SHOP SALE",
+    "ctaHref": "/collection/sale",
+    "bg": "#1A5BB5",
+    "textColor": "#FFFFFF"
+  }
+]

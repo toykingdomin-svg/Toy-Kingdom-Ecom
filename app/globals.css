@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-tk-white text-tk-black font-poppins;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-fredoka;
+  }
+}
+
+@layer components {
+  .tk-container {
+    @apply mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8;
+  }
+  .tk-btn {
+    @apply inline-flex items-center justify-center font-fredoka uppercase tracking-wide
+           rounded-md transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .tk-btn-primary {
+    @apply tk-btn bg-tk-red text-white hover:bg-tk-red-dk active:scale-[0.98];
+  }
+  .tk-btn-secondary {
+    @apply tk-btn bg-tk-gold text-white hover:bg-tk-gold-lt active:scale-[0.98];
+  }
+  .tk-btn-outline {
+    @apply tk-btn border border-tk-red text-tk-red hover:bg-tk-red hover:text-white;
+  }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}

@@ -1,0 +1,12 @@
+[
+  { "id": "rc-battery", "label": "RC & Battery Operated", "slug": "rc-battery", "icon": "🚗", "color": "#E8231A" },
+  { "id": "diecast", "label": "Die-Cast & Vehicles", "slug": "die-cast-vehicles", "icon": "🏎️", "color": "#1A5BB5" },
+  { "id": "action-figures", "label": "Action Figures", "slug": "action-figures", "icon": "🦸", "color": "#E5961E" },
+  { "id": "dinosaurs", "label": "Dinosaurs", "slug": "dinosaurs", "icon": "🦕", "color": "#4A7A2B" },
+  { "id": "dolls-princess", "label": "Dolls & Princess", "slug": "dolls-princess", "icon": "👸", "color": "#E8231A" },
+  { "id": "kitchen-roleplay", "label": "Kitchen & Role-Play", "slug": "kitchen-roleplay", "icon": "🍳", "color": "#F5D800" },
+  { "id": "construction", "label": "Construction & Building", "slug": "construction-building", "icon": "🧱", "color": "#E5961E" },
+  { "id": "board-games", "label": "Board Games", "slug": "board-games", "icon": "🎲", "color": "#1A5BB5" },
+  { "id": "scooters-rideons", "label": "Scooters & Ride-Ons", "slug": "scooters-ride-ons", "icon": "🛴", "color": "#4A7A2B" },
+  { "id": "educational", "label": "Educational & DIY", "slug": "educational-diy", "icon": "🔬", "color": "#1A5BB5" }
+]
