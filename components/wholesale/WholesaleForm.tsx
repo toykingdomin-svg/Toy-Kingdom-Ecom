@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -32,7 +32,7 @@ export function WholesaleForm() {
 
   const onSubmit = (data: FormData) => {
     const msg = [
-      "Wholesale Enquiry â€” Toy Kingdom Online",
+      "Wholesale Enquiry — Toy Kingdom Online",
       "",
       `Business: ${data.businessName}`,
       `Contact: ${data.contactName}`,
@@ -98,7 +98,7 @@ export function WholesaleForm() {
         </Field>
         <Field label="Category of Interest" error={errors.category?.message}>
           <select {...register("category")} className={fieldCls}>
-            <option value="">Select categoryâ€¦</option>
+            <option value="">Select category…</option>
             {categories.map((c) => (
               <option key={c.id} value={c.label}>
                 {c.label}
@@ -109,10 +109,10 @@ export function WholesaleForm() {
         </Field>
         <Field label="Approx Monthly Qty" error={errors.monthlyQty?.message}>
           <select {...register("monthlyQty")} className={fieldCls}>
-            <option value="">Select rangeâ€¦</option>
-            <option value="50â€“100 pcs">50â€“100 pcs</option>
-            <option value="100â€“500 pcs">100â€“500 pcs</option>
-            <option value="500â€“1000 pcs">500â€“1000 pcs</option>
+            <option value="">Select range…</option>
+            <option value="50–100 pcs">50–100 pcs</option>
+            <option value="100–500 pcs">100–500 pcs</option>
+            <option value="500–1000 pcs">500–1000 pcs</option>
             <option value="1000+ pcs">1000+ pcs</option>
           </select>
         </Field>
@@ -164,4 +164,3 @@ function Field({
     </label>
   );
 }
-

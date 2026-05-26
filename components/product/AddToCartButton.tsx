@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { ShoppingBag } from "lucide-react";
 import { toast } from "sonner";
@@ -47,7 +47,7 @@ export function AddToCartButton({
         e.preventDefault();
         e.stopPropagation();
         addItem(product, qty);
-        toast.success(`Added to bag â€” ${product.name}`);
+        toast.success(`Added to bag — ${product.name}`);
       }}
     >
       <ShoppingBag className="h-4 w-4" />
@@ -55,4 +55,3 @@ export function AddToCartButton({
     </Button>
   );
 }
-

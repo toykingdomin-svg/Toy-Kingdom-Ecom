@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { toast } from "sonner";
@@ -53,7 +53,7 @@ export function CartSummary() {
         )}
         <Row
           label="Delivery"
-          value={delivery === 0 ? "FREE âœ“" : formatPrice(delivery)}
+          value={delivery === 0 ? "FREE ✓" : formatPrice(delivery)}
           valueClass={delivery === 0 ? "text-tk-green font-bold" : ""}
         />
       </div>
@@ -68,7 +68,7 @@ export function CartSummary() {
       </div>
       {totalDiscount > 0 && (
         <div className="mt-3 bg-green-50 text-tk-green text-xs font-poppins p-2 rounded">
-          ðŸŽ‰ You save {formatPrice(totalDiscount)} on this order!
+          🎉 You save {formatPrice(totalDiscount)} on this order!
         </div>
       )}
 
@@ -76,7 +76,7 @@ export function CartSummary() {
       {coupon ? (
         <div className="mt-4 flex items-center justify-between bg-green-50 border border-tk-green/30 rounded-md p-2">
           <span className="text-sm font-poppins text-tk-green">
-            âœ“ {coupon.code} applied
+            ✓ {coupon.code} applied
           </span>
           <button
             onClick={() => {
@@ -121,7 +121,7 @@ export function CartSummary() {
       </Link>
 
       <p className="text-[11px] text-tk-gray text-center mt-3">
-        Try codes: <b>TK10</b> Â· <b>TK20</b> Â· <b>WELCOME15</b>
+        Try codes: <b>TK10</b> · <b>TK20</b> · <b>WELCOME15</b>
       </p>
     </div>
   );
@@ -143,4 +143,3 @@ function Row({
     </div>
   );
 }
-
