@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram, MessageCircle, Mail, Phone, MapPin } from "lucide-react";
 import { TK_BRAND } from "@/lib/constants";
 
@@ -17,8 +18,14 @@ export function Footer() {
         {/* Brand block */}
         <div>
           <div className="flex items-center gap-2 mb-3">
-            <div className="h-10 w-10 rounded-full bg-tk-gold text-white grid place-items-center font-fredoka text-xl">
-              TK
+            <div className="relative h-10 w-10 shrink-0">
+              <Image
+                src="/tk-logo-crown.jpeg"
+                alt="Toy Kingdom"
+                fill
+                sizes="40px"
+                className="object-contain"
+              />
             </div>
             <div className="font-fredoka uppercase text-lg">Toy Kingdom</div>
           </div>

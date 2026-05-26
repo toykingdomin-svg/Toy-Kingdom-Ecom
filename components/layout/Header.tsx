@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { AnimatePresence } from "framer-motion";
@@ -41,9 +42,16 @@ export function Header() {
           </button>
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 select-none">
-            <div className="h-10 w-10 lg:h-12 lg:w-12 rounded-full bg-tk-gold text-white grid place-items-center font-fredoka text-xl shadow">
-              TK
+          <Link href="/" className="flex items-center gap-1 select-none">
+            <div className="relative h-14 w-14 lg:h-16 lg:w-16 shrink-0">
+              <Image
+                src="/tk-logo-crown.jpeg"
+                alt="Toy Kingdom"
+                fill
+                sizes="56px"
+                className="object-contain"
+                priority
+              />
             </div>
             <div className="hidden sm:flex flex-col leading-tight">
               <span className="font-fredoka text-tk-black text-lg uppercase">

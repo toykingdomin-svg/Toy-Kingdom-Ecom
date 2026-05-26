@@ -98,8 +98,8 @@ export function AuthForm({ mode }: { mode: Mode }) {
 
           {/* Mobile brand badge */}
           <div className="flex lg:hidden items-center gap-2 mb-5">
-            <div className="h-8 w-8 rounded-full bg-tk-red grid place-items-center">
-              <span className="text-white font-fredoka text-sm">TK</span>
+            <div className="relative h-9 w-9 shrink-0">
+              <Image src="/tk-logo-crown.jpeg" alt="Toy Kingdom" fill sizes="36px" className="object-contain" />
             </div>
             <span className="font-fredoka text-tk-red uppercase tracking-wide">Toy Kingdom Online</span>
           </div>
